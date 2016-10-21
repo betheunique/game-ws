@@ -12,7 +12,6 @@
 ## MySQL can be used for persistance data storage.  
 
 ## Synchronization can be implemented for replicating data from redis to MySQl.
+- User login can be implemented
 
-## User login can be implemented
-
-## Note genericDBService @Autowired gives failure comment autowiring and create object of GenericDBService in SessionIDAccess
+Note genericDBService @Autowired gives failure comment autowiring and create object of GenericDBService in SessionIDAccess
