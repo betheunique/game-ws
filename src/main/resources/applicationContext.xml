@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <context:component-scan base-package="com.game.ws"/>
+    <bean id='controllerAspect' class='com.game.ws.application.logging.LoggingAspect' />
+    <aop:aspectj-autoproxy proxy-target-class="true">
+        <aop:include name='controllerAspect' />
+    </aop:aspectj-autoproxy>
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/classes/application.properties" />
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.databaseurl}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+          p:maxActive="${jdbc.maxActive}"
+          p:maxIdle="${jdbc.minIdle}"
+          p:minIdle="${jdbc.maxIdle}"
+          p:poolPreparedStatements="${jdbc.poolPreparedStatements}"
+          p:logAbandoned= "${jdbc.logAbandoned}"
+    />
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <!-- <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property> -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.testWhileIdle">${jdbc.testWhileIdle}</prop>
+                <prop key="hibernate.testOnBorrow">${jdbc.testOnBorrow}</prop>
+                <prop key="hibernate.testOnReturn">${jdbc.testOnReturn}</prop>
+                <prop key="hibernate.validationQuery">${jdbc.validationQuery}</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.jdb.batch_size">50</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven />
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!--  Executor for the methods marked with @async annotations -->
+    <task:executor id="asyncExecutor" pool-size="25" />
+
+    <!-- Configuration for the Runtime -->
+    <task:annotation-driven executor="asyncExecutor" />
+
+</beans>
