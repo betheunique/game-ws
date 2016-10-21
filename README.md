@@ -1,7 +1,11 @@
 # game-ws
 
-## Spring based webservice. 
-- Spring 3.0.5  - Jedis - Hibernet (Not implemented ) can be used for persistant data. 
+## Spring based webservice. As complexity increases very moduler webservice can be made. 
+- Spring 3.0.5  
+- Jedis.
+- Hibernet is used for persistant data store (MySQL) communication. 
+- Jersey.
+- Jackson JSON serialization and de-serialization (Commented in the service but its powerful)
 
 ## Volatile storage is used for temporary storage. 
 - HashMap for sessionId and its corresponding state is stored in it. 
