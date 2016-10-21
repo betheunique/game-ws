@@ -14,3 +14,5 @@
 ## Synchronization can be implemented for replicating data from redis to MySQl.
 
 ## User login can be implemented
+
+## Note genericDBService @Autowired gives failure comment autowiring and create object of GenericDBService in SessionIDAccess
