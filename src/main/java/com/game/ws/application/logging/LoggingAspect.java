@@ -17,7 +17,7 @@ import org.springframework.util.StopWatch;
 public class LoggingAspect {
 
     private Logger logger = Logger.getLogger("reportsLogger");
-    @Pointcut("within(com.game.ws.game.controllers..*)")
+    @Pointcut("within(com.game.ws.game.controller..*)")
     public void pointCut() {}
 
     StopWatch stopWatch;

@@ -2,10 +2,12 @@ package com.game.ws.game.access;
 
 import com.game.ws.game.cache.RedisClient;
 import com.game.ws.game.db.DBService;
+import com.game.ws.game.db.GenericDBService;
 import com.google.common.util.concurrent.UncheckedExecutionException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.pattern.IntegerPatternConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -15,6 +17,7 @@ import java.util.Map;
 /**
  * Created by abhishekrai on 20/10/2016.
  */
+@Component
 public class SessionIDRepository {
 
     private static Logger logger = Logger.getLogger(SessionIDRepository.class);
@@ -41,6 +44,7 @@ public class SessionIDRepository {
      * These are initial values
      */
     private void loadSessionID() {
+       DBService genericDBService = new GenericDBService();
 
         List<SessionIDAccess> sessionIDAccesses = genericDBService.getAllRecords(SessionIDAccess.class);
         for(SessionIDAccess sessionID : sessionIDAccesses) {

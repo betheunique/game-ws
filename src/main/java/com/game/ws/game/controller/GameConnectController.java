@@ -6,8 +6,6 @@ import com.game.ws.game.service.GameConnectService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -24,7 +22,7 @@ public class GameConnectController {
 
     private static Logger logger = Logger.getLogger(GameConnectController.class);
 
-
+//    @Autowired
     private GameConnectService gameConnectService;
 
     @Path("/connect")
