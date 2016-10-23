@@ -5,6 +5,9 @@ import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.webapp.WebAppContext;
+import org.glassfish.jersey.servlet.ServletContainer;
 import org.springframework.core.io.ClassPathResource;
 
 
@@ -41,10 +44,16 @@ public class EmbeddedJetty {
         server.join();
     }
 
-    private static ServletContextHandler getServletContextHandler() throws IOException {
-        ServletContextHandler contextHandler = new ServletContextHandler();
+    private static WebAppContext getServletContextHandler() throws IOException {
+        WebAppContext contextHandler = new WebAppContext();
         contextHandler.setErrorHandler(null);
         contextHandler.setContextPath(GameConstants.GAME_EMBEDDED_JETTY_CONTEXT_PATH);
+        contextHandler.setWar("src/main/webapp");
+        ServletHolder servletHolder = new ServletHolder(ServletContainer.class);
+
+        contextHandler.addServlet(servletHolder, "/");
+
+        //contextHandler.addServlet(org.springframework.web.servlet.DispatcherServlet.class, "/classes");
         contextHandler.setResourceBase(new ClassPathResource("webapp").getURI().toString());
         return contextHandler;
     }
