@@ -19,11 +19,11 @@ public class DefaultResponseBean {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-    @XmlElement
+
     public int getErrorCode() {
         return errorCode;
     }
-    @XmlElement
+
     public String getErrorMessage() {
         return errorMessage;
     }

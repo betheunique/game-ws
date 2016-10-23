@@ -267,11 +267,11 @@
       <version>1.4.0.RELEASE</version>
     </dependency>
     <!-- Jetty dependency -->
-    <!-- <dependency>
+    <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
       <version>9.0.6.v20130930</version>
-    </dependency> -->
+    </dependency>
 
 
   </dependencies>
