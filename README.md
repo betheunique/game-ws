@@ -19,8 +19,16 @@
 ## Synchronization can be implemented for replicating data from redis to MySQl.
 - User login can be implemented
 
+## Create Databse
+- add table g_session_state
+- (DROP TABLE IF EXISTS `g_session_state`; CREATE TABLE `t_user_rules` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `session_id` VARCHAR(200) NOT NULL,
+  `total_value` VARCHAR(200) NOT NULL
+  PRIMARY KEY (`id`),) ENGINE=InnoDB DEFAULT CHARSET=utf8; )
+- if not
+- *genericDBService @Autowired gives failure comment autowiring and create object of GenericDBService in SessionIDAccess
+
 ## Command to package and deployment.
 - mvn clean package
 - mvn jetty:deploy-war
-
-Note genericDBService @Autowired gives failure comment autowiring and create object of GenericDBService in SessionIDAccess
