@@ -7,6 +7,7 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.pattern.IntegerPatternConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +28,8 @@ public class SessionIDRepository {
     /**
      * Commenting redis as persistance datasource.
      */
-//    private RedisClient redisClient;
+    //@Autowired
+    //private RedisClient redisClient;
 
     private Map<String, SessionIDAccess> sessionIDVsTotalValue1 = new HashMap<String, SessionIDAccess>();
 
@@ -44,7 +46,7 @@ public class SessionIDRepository {
      * These are initial values
      */
     private void loadSessionID() {
-       DBService genericDBService = new GenericDBService();
+//       DBService genericDBService = new GenericDBService();
 
         List<SessionIDAccess> sessionIDAccesses = genericDBService.getAllRecords(SessionIDAccess.class);
         for(SessionIDAccess sessionID : sessionIDAccesses) {

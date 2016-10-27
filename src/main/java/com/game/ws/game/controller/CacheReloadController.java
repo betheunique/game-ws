@@ -20,10 +20,10 @@ public class CacheReloadController {
 
     private static Logger logger = Logger.getLogger(CacheReloadController.class);
 
-
+    @Autowired
     private SessionIDRepository sessionIDRepository;
 
-
+    @Autowired
     private RedisProperties redisProperties;
 
     /**
@@ -42,7 +42,7 @@ public class CacheReloadController {
      * Re-initializes redis properties.
      * @return
      */
-    @Path("reloadRedisProperties")
+    @Path("/reloadRedisProperties")
     @GET
     public int reloadRedisProperties() {
         redisProperties.reloadProperties();

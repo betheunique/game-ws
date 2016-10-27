@@ -3,6 +3,7 @@ package com.game.ws.game.security;
 import com.game.ws.game.access.SessionIDRepository;
 import com.game.ws.game.constants.GameConstants;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ public class RequestFilter implements ContainerRequestFilter {
     @Context
     private HttpServletRequest servletRequest;
 
+    @Autowired
     private SessionIDRepository sessionIDRepository;
 
     private static Logger logger = Logger

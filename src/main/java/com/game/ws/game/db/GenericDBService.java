@@ -28,4 +28,6 @@ public class GenericDBService implements DBService{
         int id = (Integer) sessionFactory.getCurrentSession().save(request);
         return id;
     }
+
+    //TODO Batch insert from Redis to DB can be done. Scheduler will  utilize the ,method
 }

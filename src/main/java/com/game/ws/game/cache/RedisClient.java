@@ -1,5 +1,6 @@
 package com.game.ws.game.cache;
 
+import com.game.ws.game.access.SessionIDAccess;
 import com.game.ws.game.constants.RedisConstants;
 import org.apache.log4j.Logger;
 import org.jvnet.hk2.annotations.Service;
@@ -73,7 +74,7 @@ public class RedisClient {
         if(RedisConstants.REDIS_IS_ON.equals(redisProperties.getPropertiesTextValue(RedisConstants.REDIS_ON_KEY)) && checkIfRedisIsUp()){
 
             int seconds = (int)20*60*60;
-
+//            SessionIDAccess sessionIDAccess = new SessionIDAccess();
             logger.debug("The expiry time is being set as: " + seconds);
             long returnValue = jedis.hsetnx(key, dataStructure, totalValue);
 

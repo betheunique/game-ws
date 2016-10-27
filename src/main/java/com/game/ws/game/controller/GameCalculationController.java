@@ -19,8 +19,9 @@ public class GameCalculationController {
 
     private  static  Logger logger = Logger.getLogger(GameCalculationController.class);
 
-
+    @Autowired
     private GameCalculationService gameCalculationService;
+
     @Path("/calculation")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

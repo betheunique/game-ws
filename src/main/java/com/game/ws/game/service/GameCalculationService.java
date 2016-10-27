@@ -17,8 +17,8 @@ public class GameCalculationService {
 
     private static Logger logger = Logger.getLogger(GameCalculationService.class);
 
-    @Autowired
-    DBService genericDBService;
+//    @Autowired
+//    DBService genericDBService;
 
     public GameCalculationResponse calculate( int firstValue, int secondValue, String sessionId) {
         SessionIDRepository sessionIDRepository = new SessionIDRepository();
@@ -49,8 +49,8 @@ public class GameCalculationService {
             /**
              * Converted to hibernate
              */
-            genericDBService.insertRecord(sessionAccess);
-
+//            genericDBService.insertRecord(sessionAccess);
+//
             return prepareCalculationResponse(totalValue);
         }
     }

@@ -22,7 +22,7 @@ public class GameConnectController {
 
     private static Logger logger = Logger.getLogger(GameConnectController.class);
 
-//    @Autowired
+    @Autowired
     private GameConnectService gameConnectService;
 
     @Path("/connect")
@@ -30,8 +30,8 @@ public class GameConnectController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response gameConnect(@HeaderParam("sessionId") String sessionId){
         logger.info("SessionId coming as ::"+ sessionId);
-        GameConnectResponse gameConnectResponse = new GameConnectResponse();
-
+//        GameConnectResponse gameConnectResponse = new GameConnectResponse();
+//        return 1;
         return gameConnectService.connectResponse(sessionId);
     }
 }
