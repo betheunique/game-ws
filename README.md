@@ -17,11 +17,13 @@
 ## MySQL can be used for persistance data storage.  
 
 ## Synchronization can be implemented for replicating data from redis to MySQl.
+- Initial Scheduler for migrating data from Redis to DB.
+- Batch Insert into DB can be done while scheduling.
 - User login can be implemented
 
 ## Create Databse
 - add table g_session_state
-- (DROP TABLE IF EXISTS `g_session_state`; CREATE TABLE `t_user_rules` (
+- (DROP TABLE IF EXISTS `g_session_state`; CREATE TABLE `g_session_state` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `session_id` VARCHAR(200) NOT NULL,
   `total_value` VARCHAR(200) NOT NULL
