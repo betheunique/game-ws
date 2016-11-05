@@ -28,8 +28,8 @@ public class SessionIDRepository {
     /**
      * Commenting redis as persistance datasource.
      */
-    //@Autowired
-    //private RedisClient redisClient;
+    @Autowired
+    private RedisClient redisClient;
 
     private Map<String, SessionIDAccess> sessionIDVsTotalValue1 = new HashMap<String, SessionIDAccess>();
 
