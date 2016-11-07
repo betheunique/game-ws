@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by abhishekrai on 20/10/2016.
  */
+@Path("/game")
 @Component
 public class GameCalculationController {
 
